@@ -61,6 +61,7 @@ geofencing.db-journal			google_app_measurement.db-journal	miio.db-journal				mii
 
 ### iOS users
 ### Non-Jailbroken iOS users
+#### Option 1
 * Setup your iOS device with the Mi Home app
 * Create an unencrypted backup of your iOS device on your computer using iTunes. In case you are unable to disable encryption you probably have a profile preventing this that enforces certain security policies (like work related accounts). Delete these profiles or use another iOS device to continu.
 * Install iBackup Viewer from [here](http://www.imactools.com/iphonebackupviewer/) (another tool that was suggested can be found [here](https://github.com/richinfante/iphonebackuptools)).
@@ -79,6 +80,14 @@ geofencing.db-journal			google_app_measurement.db-journal	miio.db-journal				mii
     * __Selectbox Plaintext / Hex:__ Hex
 * Hit the decrypt button. Your token are the first two lines of the right block of code. These two lines should contain a token of 32 characters and should be the correct token for your device.
 * If this tutorial did not work for you, [here](https://github.com/mediter/miio/blob/master/docs/ios-token-without-reset.md) is another that might work.
+
+##### Option 2
+* Download a MITM/packet capture app (e.g. https://apps.apple.com/us/app/http-catcher/id1445874902)
+* Follow instructions in the app to begin sniffing HTTPS traffic
+* Once running the app, open the Mi Home app
+* Go back to MITM/packet capture app
+* Look for a request log with `https://us.api.io.mi.com/app/v2/home/device_list_page`
+* Inspect the "Response" and look for `"token": "abcdef1234567890abcdef1234567890"` where the (32) character value is the token
 
 ## Jailbroken iOS users
 * Setup your iOS device with the Mi Home app
